@@ -18,6 +18,7 @@ func main() {
 			r.Post("/", handlers.CreateRequest)
 			r.Route("/{requestId}", func(r chi.Router) {
 				r.Get("/", handlers.RequestDetail)
+				r.Delete("/", handlers.DeleteRequest)
 			})
 		})
 	})

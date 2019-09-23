@@ -18,7 +18,9 @@ func CreateRequest(w http.ResponseWriter, r *http.Request) {
 	newRequest.ID = len(database.Events)+1
 	database.Events = append(database.Events, newRequest)
 
-	w.WriteHeader(http.StatusOK) // In my opinion it should return StatusCreated (201), but the specs says to return 200
+	w.WriteHeader(http.StatusOK) // In my opinion it should return StatusCreated (201), but the spec says to return 200
 
 	_ = json.NewEncoder(w).Encode(newRequest)
+	// Well, the spec says to return {"id": x}, but I'm returning url and interval as well,
+	// as it wont take much more resources, but it could be helpfully for frontend devs
 }
