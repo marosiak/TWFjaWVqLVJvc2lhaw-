@@ -10,10 +10,9 @@ import (
 
 func DeleteRequest(w http.ResponseWriter, r *http.Request) {
 	id, _ := strconv.Atoi(URLParam(r, "requestId"))
-	for i, singleEvent := range database.Requests {
-		if singleEvent.ID == id {
-			events := database.Requests
-			events = append(events[:i], events[i+1:]...)
+	for i, request := range database.Requests {
+		if request.ID == id {
+			database.Requests = append(database.Requests[:i], database.Requests[i+1:]...)
 			m := make(map[string]int)
 			m["id"] = id
 			json.NewEncoder(w).Encode(m)

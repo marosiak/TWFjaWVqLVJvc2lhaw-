@@ -1,18 +1,21 @@
 package database
 
-import "errors"
+import (
+	"errors"
+	"time"
+)
 
 type History struct {
 	Response 	string 		`json:"response"`
 	Duration 	float32		`json:"duration"`
-	CreatedAt	int 		`json:"created_at"`
+	CreatedAt	int64 		`json:"created_at"`
 }
 
 type Request struct {
-	ID          int    		`json:"id"`
-	Url       	string 		`json:"url"`
-	Interval 	int 		`json:"interval"`
-	History		[]History 	`json:"-"`
+	ID          int    				`json:"id"`
+	Url       	string 				`json:"url"`
+	Interval 	time.Duration 		`json:"interval"`
+	History		[]History 			`json:"-"`
 }
 
 

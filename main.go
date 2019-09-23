@@ -19,6 +19,8 @@ func main() {
 			r.Route("/{requestId}", func(r chi.Router) {
 				r.Get("/", handlers.RequestDetail)
 				r.Delete("/", handlers.DeleteRequest)
+
+				r.Get("/history", handlers.RequestHistory)
 			})
 		})
 	})
