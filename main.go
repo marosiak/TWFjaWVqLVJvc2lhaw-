@@ -16,6 +16,9 @@ func main() {
 		r.Route("/fetcher", func(r chi.Router) {
 			r.Get("/", handlers.RequestsList)
 			r.Post("/", handlers.CreateRequest)
+			r.Route("/{requestId}", func(r chi.Router) {
+				r.Get("/", handlers.RequestDetail)
+			})
 		})
 	})
 	_ = http.ListenAndServe(":8080", r)

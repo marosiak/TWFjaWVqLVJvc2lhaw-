@@ -1,5 +1,7 @@
 package database
 
+import "errors"
+
 type Request struct {
 	ID          int    	`json:"id"`
 	Url       	string 	`json:"url"`
@@ -11,6 +13,11 @@ type AllRequests []Request
 
 var Events = AllRequests{}
 
-func GetLength() int {
-	return len(AllRequests{})
+func GetById(id int) (Request, error) {
+	for i, singleEvent := range Events {
+		if singleEvent.ID == id {
+			return Events[i], nil
+		}
+	}
+	return Request{}, errors.New("Cannot find the resource")
 }
