@@ -7,5 +7,5 @@ import (
 )
 
 func RequestsList(w http.ResponseWriter, r *http.Request) {
-	json.NewEncoder(w).Encode(database.Events)
+	json.NewEncoder(w).Encode(database.Requests)
 }
